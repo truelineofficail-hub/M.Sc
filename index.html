@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,
+      maximum-scale=1.0,user-scalable=no">
+
+<title>M.Sc — Microbiology Tracker</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f6fed">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="M.Sc">
+
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="theme-init.js"></script>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+    <div class="header-brand">
+
+        <div class="header-mark">
+
+            <svg viewBox="0 0 24 24" fill="#fff">
+                <path d="M12 3 1.5 8 12 13l8.5-4.4V13h1.5V8L12 3z"/>
+                <path d="M6 10.2V15c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.8l-6 3.1-6-3.1z"/>
+            </svg>
+
+        </div>
+
+        <div class="logo">
+            M.Sc
+        </div>
+
+    </div>
+
+    <button
+        class="header-icon-btn"
+        onclick="go('settings')"
+        aria-label="Settings">
+
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 13.5a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V19.5a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.04H4.5a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.56-1.04 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H10.6a1.7 1.7 0 0 0 1.04-1.56V4.5a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V10.6a1.7 1.7 0 0 0 1.56 1.04H19.5a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.04z"/>
+        </svg>
+
+    </button>
+
+</header>
+
+<section class="page active" id="home">
+
+    
+
+    <div class="hero mission-hero">
+
+        <div class="hero-top">
+
+            <div class="hero-day">
+                DAY <span id="heroDay">01</span>
+            </div>
+
+            <div class="hero-fire">
+                🔥
+            </div>
+
+        </div>
+
+        <div class="hero-main">
+
+            <div class="hero-message">
+
+                <h1 id="heroTitle">
+                    KEEP THE<br>
+                    PROGRESS GOING.
+                </h1>
+
+                <p id="heroMessage">
+                    Every unit, every entry,
+                    every submission adds up.
+                </p>
+
+                <p
+                    id="heroDeadline"
+                    style="
+                    margin-top:8px;
+                    font-size:10px;
+                    font-weight:800;
+                    color:var(--orange);
+                    display:none">
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="hero-countdown">
+
+            <span class="hero-countdown-label">
+                TIME LEFT IN PROGRAM
+            </span>
+
+            <span class="hero-countdown-value">
+                <span id="daysLeft">--</span>
+                <small>DAYS</small>
+            </span>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="grid2">
+
+        <div class="stat">
+
+            <div class="stat-label">
+                OVERALL PROGRESS
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="overallPercent">
+                0%
+            </div>
+
+            <div class="progress">
+
+                <span id="overallBar"></span>
+
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                TIME LEFT
+            </div>
+
+            <div
+                class="stat-value"
+                id="collegeTimeLeft">
+                --
+            </div>
+
+            <div class="stat-label">
+                UNTIL DEGREE
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                CURRENT
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="currentSemesterStat">
+                1
+            </div>
+
+            <div class="stat-label">
+                SEMESTER
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                ASSIGNMENTS
+            </div>
+
+            <div
+                class="stat-value"
+                id="taskProgress">
+                0
+            </div>
+
+            <div class="stat-label">
+                PENDING
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="section-title">
+
+        <h3>
+            📔 Journal
+        </h3>
+
+        <span
+            style="cursor:pointer"
+            onclick="go('journal')">
+            OPEN →
+        </span>
+
+    </div>
+
+    <div
+        class="card"
+        id="homeJournalPreview">
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            📋 Assignments
+        </h3>
+
+        <span
+            style="cursor:pointer"
+            onclick="go('assignments')">
+            VIEW ALL →
+        </span>
+
+    </div>
+
+    <div
+        class="card"
+        id="homeAssignmentsPreview">
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            🧫 Activities
+        </h3>
+
+        <span
+            style="cursor:pointer"
+            onclick="go('activities')">
+            VIEW ALL →
+        </span>
+
+    </div>
+
+    <div
+        class="card"
+        id="homeActivitiesPreview">
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            🔬 Research
+        </h3>
+
+        <span
+            style="cursor:pointer"
+            onclick="go('research')">
+            VIEW ALL →
+        </span>
+
+    </div>
+
+    <div
+        class="card"
+        id="homeResearchPreview">
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            🧬 Syllabus Progress
+        </h3>
+
+        <span
+            style="cursor:pointer"
+            onclick="go('syllabus')">
+            VIEW ALL →
+        </span>
+
+    </div>
+
+    <p
+        id="homeSyllabusLabel"
+        style="
+        font-size:9px;
+        font-weight:800;
+        color:var(--muted);
+        letter-spacing:.5px;
+        margin:-10px 0 10px">
+        SEMESTER 1
+    </p>
+
+    <div
+        class="card"
+        id="homeSyllabusPreview">
+    </div>
+
+    <button
+        class="btn full"
+        onclick="go('timer')">
+
+        ▶ START A FOCUS SESSION
+
+    </button>
+
+    
+
+    <div class="card">
+
+        <p style="
+            font-size:13px;
+            line-height:1.6;
+            font-style:italic;
+            color:var(--muted);
+        ">
+
+            “You don't need to finish everything
+            today. You just need to make tomorrow
+            easier.”
+
+        </p>
+
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            📅 Today's Classes
+        </h3>
+
+        <span
+            style="cursor:pointer"
+            onclick="go('timetable')">
+            FULL TIMETABLE →
+        </span>
+
+    </div>
+
+    <p
+        id="homeTimetableLabel"
+        style="
+        font-size:9px;
+        font-weight:800;
+        color:var(--muted);
+        letter-spacing:.5px;
+        margin:-10px 0 10px">
+        TODAY
+    </p>
+
+    <div
+        class="card"
+        id="homeTimetablePreview"
+        style="
+        display:flex;
+        flex-direction:column;
+        gap:10px">
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            🏖️ Vacation
+        </h3>
+
+    </div>
+
+    <div
+        class="card"
+        id="homeVacationPreview">
+    </div>
+
+</section>
+
+<section class="page" id="subjects">
+
+    <h1 class="title">
+        Subjects
+    </h1>
+
+    <p class="subtitle">
+        16 subjects. 4 semesters.
+    </p>
+
+    <div id="subjectCards"></div>
+
+</section>
+
+<section class="page" id="subjectDetail">
+
+    <div
+        onclick="go('subjects')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← SUBJECTS
+    </div>
+
+    <h1
+        class="title"
+        id="subjectDetailTitle">
+        General Microbiology
+    </h1>
+
+    <p
+        class="subtitle"
+        id="subjectDetailSubtitle">
+        Semester 1 — build the foundation.
+    </p>
+
+    <div class="hero mission-hero">
+
+        <div class="hero-label">
+            TARGET SCORE
+        </div>
+
+        <h1
+            style="
+            font-size:43px;
+            margin:7px 0"
+            id="subjectDetailTarget">
+            90+
+        </h1>
+
+        <p
+            style="
+            font-size:11px;
+            color:var(--muted)">
+            UNDERSTAND IT. DON'T JUST MEMORIZE IT.
+        </p>
+
+    </div>
+
+    <div class="grid2">
+
+        <div class="stat">
+
+            <div class="stat-label">
+                PROGRESS
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="subjectDetailProgress">
+                0%
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                CHAPTERS
+            </div>
+
+            <div
+                class="stat-value"
+                id="subjectDetailChapterCount">
+                0/12
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section-title">
+
+        <h3>
+            Chapter Tracker
+        </h3>
+
+        <span id="subjectDetailChapterLabel">
+            12 CHAPTERS
+        </span>
+
+    </div>
+
+    <div id="subjectDetailChapters"></div>
+
+</section>
+
+<section class="page" id="syllabus">
+
+    <h1 class="title">
+        Syllabus
+    </h1>
+
+    <p class="subtitle">
+        Every chapter, every subject, one screen.
+    </p>
+
+    <div id="syllabusList"></div>
+
+</section>
+
+<section class="page" id="mission">
+
+    <h1 class="title">
+        Semester Timeline
+    </h1>
+
+    <p class="subtitle">
+        One day at a time.
+    </p>
+
+    <div id="days"></div>
+
+</section>
+
+<section class="page" id="analytics">
+
+    <h1 class="title">
+        Progress
+    </h1>
+
+    <p
+        class="subtitle"
+        id="analyticsSemesterLabel">
+        SEMESTER 1 — CURRENTLY PURSUING
+    </p>
+
+    <div class="grid2">
+
+        <div class="stat">
+
+            <div class="stat-label">
+                SEMESTER <span id="analyticsSemesterNum">1</span>
+            </div>
+
+            <div
+                class="stat-value"
+                id="semesterDateRange"
+                style="font-size:14px">
+                21 Jul – 30 Nov
+            </div>
+
+            <div class="stat-label">
+                2026
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                SEMESTER ENDS IN
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="semesterDaysLeft">
+                0
+            </div>
+
+            <div class="stat-label">
+                DAYS
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card mission-hero" style="margin-top:11px">
+
+        <div
+            style="
+            font-size:9px;
+            font-weight:800;
+            color:var(--muted);
+            letter-spacing:.6px;
+            margin-bottom:12px">
+            TIME LEFT UNTIL DEGREE — 21 JUL 2026 TO 1 APR 2028
+        </div>
+
+        <div
+            style="
+            display:flex;
+            justify-content:space-between;
+            gap:6px">
+
+            <div style="text-align:center;flex:1">
+                <div
+                    class="stat-value orange"
+                    id="countdownDays"
+                    style="font-size:22px">
+                    000
+                </div>
+                <div class="stat-label">DAYS</div>
+            </div>
+
+            <div style="text-align:center;flex:1">
+                <div
+                    class="stat-value orange"
+                    id="countdownHours"
+                    style="font-size:22px">
+                    00
+                </div>
+                <div class="stat-label">HRS</div>
+            </div>
+
+            <div style="text-align:center;flex:1">
+                <div
+                    class="stat-value orange"
+                    id="countdownMinutes"
+                    style="font-size:22px">
+                    00
+                </div>
+                <div class="stat-label">MIN</div>
+            </div>
+
+            <div style="text-align:center;flex:1">
+                <div
+                    class="stat-value orange"
+                    id="countdownSeconds"
+                    style="font-size:22px">
+                    00
+                </div>
+                <div class="stat-label">SEC</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section-title">
+        <h3>Semester Progress</h3>
+    </div>
+
+    <div class="grid2">
+
+        <div class="stat">
+
+            <div class="stat-label">
+                ASSIGNMENTS
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="analyticsAssignmentsTotal">
+                0
+            </div>
+
+            <div class="stat-label">
+                TOTAL ADDED
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                JOURNAL
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="analyticsJournalTotal">
+                0
+            </div>
+
+            <div class="stat-label">
+                ENTRIES WRITTEN
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                RESEARCH
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="analyticsResearchTotal">
+                0
+            </div>
+
+            <div class="stat-label">
+                NOTES ADDED
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                ACTIVITIES
+            </div>
+
+            <div
+                class="stat-value orange"
+                id="analyticsActivitiesTotal">
+                0
+            </div>
+
+            <div class="stat-label">
+                LOGGED
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section-title">
+        <h3>Subject Progress</h3>
+    </div>
+
+    <div
+        class="card"
+        id="analyticsSubjects">
+    </div>
+
+    <div class="section-title">
+        <h3>📋 Assignments</h3>
+    </div>
+
+    <div id="analyticsAssignmentsList"></div>
+
+    <div class="section-title">
+        <h3>📔 Journal</h3>
+    </div>
+
+    <div id="analyticsJournalList"></div>
+
+    <div class="section-title">
+        <h3>🔬 Research</h3>
+    </div>
+
+    <div id="analyticsResearchList"></div>
+
+    <div class="section-title">
+        <h3>🧫 Activities</h3>
+    </div>
+
+    <div id="analyticsActivitiesList"></div>
+
+</section>
+
+<section class="page" id="pyq">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        PYQ Center
+    </h1>
+
+    <p class="subtitle">
+        Train with real exam-style questions.
+    </p>
+
+    <select id="pyqSubject">
+    </select>
+
+    <div class="section-title">
+
+        <h3>
+            Previous Papers
+        </h3>
+
+    </div>
+
+    <div id="pyqs"></div>
+
+    <div
+        class="card"
+        style="
+        display:flex;
+        gap:8px;
+        align-items:center">
+
+        <input
+            class="input"
+            id="pyqCustomLabel"
+            placeholder="e.g. April 2026"
+            style="margin:0;flex:1"
+            onkeydown="
+            if(event.key==='Enter')
+                addCustomPyq()">
+
+        <button
+            class="btn"
+            style="
+            white-space:nowrap;
+            padding:11px 16px"
+            onclick="addCustomPyq()">
+
+            + ADD
+
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <strong class="card-title">
+            Mistake Bank
+        </strong>
+
+        <p
+            class="muted small"
+            style="margin-top:7px">
+
+            Save questions you got wrong
+            and revise them before the exam.
+
+        </p>
+
+        <button
+            class="btn secondary"
+            style="margin-top:12px"
+            onclick="go('notes')">
+
+            📝 OPEN NOTES
+
+        </button>
+
+    </div>
+
+</section>
+
+<section class="page" id="timer">
+
+    <h1 class="title">
+        Study Timer
+    </h1>
+
+    <p class="subtitle">
+        Focus. No distractions.
+    </p>
+
+    <select id="timerSubject" onchange="changeTimerSubject()">
+    </select>
+
+    <div
+        class="duration-picker"
+        style="
+        display:flex;
+        gap:8px;
+        margin-top:12px">
+
+        <button
+            class="duration-btn"
+            data-minutes="25"
+            onclick="setTimerDuration(25)">
+            25m
+        </button>
+
+        <button
+            class="duration-btn active"
+            data-minutes="45"
+            onclick="setTimerDuration(45)">
+            45m
+        </button>
+
+        <button
+            class="duration-btn"
+            data-minutes="60"
+            onclick="setTimerDuration(60)">
+            60m
+        </button>
+
+        <button
+            class="duration-btn"
+            data-minutes="90"
+            onclick="setTimerDuration(90)">
+            90m
+        </button>
+
+    </div>
+
+    <div
+        class="timer"
+        id="timerCircle">
+
+        <div class="timer-inner">
+
+            <div
+                class="timer-time"
+                id="timerDisplay">
+
+                45:00
+
+            </div>
+
+            <div class="timer-label">
+                FOCUS SESSION
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="timer-buttons">
+
+        <button
+            class="btn"
+            onclick="startTimer()">
+            START
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="pauseTimer()">
+            PAUSE
+        </button>
+
+        <button
+            class="btn secondary"
+            onclick="resetTimer()">
+            RESET
+        </button>
+
+    </div>
+
+    <button
+        class="btn full dark"
+        style="margin-top:12px"
+        onclick="markTimerSubjectDone()">
+
+        ✓ LOG SESSION FOR SUBJECT
+
+    </button>
+
+    <div
+        class="grid2"
+        style="margin-top:25px">
+
+        <div class="stat">
+
+            <div class="stat-label">
+                TODAY
+            </div>
+
+            <div
+                class="stat-value"
+                id="todayMinutes">
+                0m
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-label">
+                TOTAL
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalHours">
+                0h
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="page" id="mock">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Mock Tests
+    </h1>
+
+    <p class="subtitle">
+        Test yourself before the real exam does.
+    </p>
+
+    <button
+        class="btn full"
+        onclick="startMock()">
+
+        🎯 START MOCK TEST
+
+    </button>
+
+    <div class="section-title">
+
+        <h3>
+            Mock History
+        </h3>
+
+    </div>
+
+    <div id="mockHistory"></div>
+
+</section>
+
+<section class="page" id="achievements">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Achievements
+    </h1>
+
+    <p class="subtitle">
+        Consistency becomes something you can see.
+    </p>
+
+    <div class="hero mission-hero">
+
+        <div class="hero-label">
+            CURRENT STREAK
+        </div>
+
+        <h1
+            style="
+            font-size:43px;
+            margin:7px 0">
+
+            <span id="achievementStreak">
+                0
+            </span>
+            🔥
+
+        </h1>
+
+        <p
+            style="
+            font-size:11px;
+            color:var(--muted)">
+
+            KEEP SHOWING UP.
+
+        </p>
+
+    </div>
+
+    <div
+        class="badges"
+        id="badges">
+    </div>
+
+</section>
+
+<section class="page" id="journal">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Subject Journal
+    </h1>
+
+    <p class="subtitle">
+        Reflections logged per subject, per semester.
+    </p>
+
+    <button
+        class="btn full"
+        onclick="addJournalEntry()">
+
+        + WRITE JOURNAL ENTRY
+
+    </button>
+
+    <div class="section-title">
+
+        <h3>
+            All Entries
+        </h3>
+
+    </div>
+
+    <div id="journalList"></div>
+
+</section>
+
+<section class="page" id="targets">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Target Marks
+    </h1>
+
+    <p class="subtitle">
+        Give every subject a destination.
+    </p>
+
+    <div id="targetList"></div>
+
+    <div class="hero mission-hero">
+
+        <div class="hero-label">
+            OVERALL TARGET
+        </div>
+
+        <h1
+            id="averageTarget"
+            style="
+            font-size:43px;
+            margin:7px 0">
+
+            80%
+
+        </h1>
+
+        <p
+            style="
+            font-size:11px;
+            color:var(--muted)">
+
+            YOUR AVERAGE TARGET
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="page" id="exam">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Exam Center
+    </h1>
+
+    <p class="subtitle">
+        Keep your important exam information here.
+    </p>
+
+    <div class="hero mission-hero">
+
+        <div class="hero-label">
+            EXAM COUNTDOWN
+        </div>
+
+        <h1
+            id="examDays"
+            style="
+            font-size:43px;
+            margin:7px 0">
+
+            --
+
+        </h1>
+
+        <p
+            style="
+            font-size:11px;
+            color:var(--muted)">
+
+            DAYS REMAINING
+
+        </p>
+
+    </div>
+
+    <div id="examSubjectList"></div>
+
+</section>
+
+<section class="page" id="notes">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Notes
+    </h1>
+
+    <p class="subtitle">
+        Your personal revision notebook.
+    </p>
+
+    <input
+        class="input"
+        id="noteSearch"
+        placeholder="Search notes..."
+        oninput="renderNotes()">
+
+    <button
+        class="btn full"
+        style="margin-top:12px"
+        onclick="newNote()">
+
+        + CREATE NEW NOTE
+
+    </button>
+
+    <div
+        id="notesList"
+        style="margin-top:15px">
+    </div>
+
+</section>
+
+<section class="page" id="assignments">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Assignments
+    </h1>
+
+    <p class="subtitle">
+        Track what's due and what's submitted.
+    </p>
+
+    <button
+        class="btn full"
+        onclick="addAssignment()">
+
+        + ADD ASSIGNMENT
+
+    </button>
+
+    <div class="section-title">
+
+        <h3>
+            All Assignments
+        </h3>
+
+    </div>
+
+    <div id="assignmentsList"></div>
+
+</section>
+
+<section class="page" id="activities">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Lab Activities
+    </h1>
+
+    <p class="subtitle">
+        Practicals, seminars, journal club — logged.
+    </p>
+
+    <button
+        class="btn full"
+        onclick="addActivity()">
+
+        + LOG ACTIVITY
+
+    </button>
+
+    <div class="section-title">
+
+        <h3>
+            Activity Log
+        </h3>
+
+    </div>
+
+    <div id="activitiesList"></div>
+
+</section>
+
+<section class="page" id="research">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Research
+    </h1>
+
+    <p class="subtitle">
+        Notes, readings, and ideas for your dissertation.
+    </p>
+
+    <button
+        class="btn full"
+        onclick="addResearchNote()">
+
+        + ADD RESEARCH NOTE
+
+    </button>
+
+    <div class="section-title">
+
+        <h3>
+            All Notes
+        </h3>
+
+    </div>
+
+    <div id="researchList"></div>
+
+</section>
+
+<section class="page" id="timetable">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Weekly Timetable
+    </h1>
+
+    <p class="subtitle">
+        MSC SEM 1 MB — Effective from 21.07.2026
+    </p>
+
+    <div
+        style="
+        display:flex;
+        gap:6px;
+        margin-bottom:16px">
+
+        <button
+            class="timetable-day-tab"
+            data-day="Mo"
+            onclick="renderTimetablePage('Mo')">
+            Mo
+        </button>
+
+        <button
+            class="timetable-day-tab"
+            data-day="Tu"
+            onclick="renderTimetablePage('Tu')">
+            Tu
+        </button>
+
+        <button
+            class="timetable-day-tab"
+            data-day="We"
+            onclick="renderTimetablePage('We')">
+            We
+        </button>
+
+        <button
+            class="timetable-day-tab"
+            data-day="Th"
+            onclick="renderTimetablePage('Th')">
+            Th
+        </button>
+
+        <button
+            class="timetable-day-tab"
+            data-day="Fr"
+            onclick="renderTimetablePage('Fr')">
+            Fr
+        </button>
+
+    </div>
+
+    <div id="timetableFullList"></div>
+
+</section>
+
+<section class="page" id="vacations">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Vacations & Holidays
+    </h1>
+
+    <p class="subtitle">
+        2026 academic calendar — RKU
+    </p>
+
+    <div id="vacationsList"></div>
+
+</section>
+
+<section class="page" id="more">
+
+    <h1 class="title">
+        More
+    </h1>
+
+    <p class="subtitle">
+        Everything else, in one place.
+    </p>
+
+    <div class="card">
+
+        <div
+            class="more-item"
+            onclick="go('assignments')">
+
+            <div class="more-icon">📋</div>
+
+            <div class="more-main">
+                <strong>Assignments</strong>
+                <p>Track submissions and due dates</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('activities')">
+
+            <div class="more-icon">🧫</div>
+
+            <div class="more-main">
+                <strong>Lab Activities</strong>
+                <p>Log practicals and seminars</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('research')">
+
+            <div class="more-icon">🔬</div>
+
+            <div class="more-main">
+                <strong>Research</strong>
+                <p>Notes and ideas for your dissertation</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('timetable')">
+
+            <div class="more-icon">🗓️</div>
+
+            <div class="more-main">
+                <strong>Timetable</strong>
+                <p>Your weekly class schedule</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('vacations')">
+
+            <div class="more-icon">🏖️</div>
+
+            <div class="more-main">
+                <strong>Vacations & Holidays</strong>
+                <p>Full 2026 academic calendar</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('pyq')">
+
+            <div class="more-icon">📝</div>
+
+            <div class="more-main">
+                <strong>PYQ Bank</strong>
+                <p>Practice previous year questions</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('mock')">
+
+            <div class="more-icon">🎯</div>
+
+            <div class="more-main">
+                <strong>Mock Tests</strong>
+                <p>Log scores and track results</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('achievements')">
+
+            <div class="more-icon">🏆</div>
+
+            <div class="more-main">
+                <strong>Achievements</strong>
+                <p>Badges you've unlocked</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('journal')">
+
+            <div class="more-icon">📔</div>
+
+            <div class="more-main">
+                <strong>Study Journal</strong>
+                <p>Daily reflections and log</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('targets')">
+
+            <div class="more-icon">🎯</div>
+
+            <div class="more-main">
+                <strong>Targets</strong>
+                <p>Set per-subject goal scores</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('exam')">
+
+            <div class="more-icon">📅</div>
+
+            <div class="more-main">
+                <strong>Exam Countdown</strong>
+                <p>Days left for each paper</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('notes')">
+
+            <div class="more-icon">🗒️</div>
+
+            <div class="more-main">
+                <strong>Notes</strong>
+                <p>Your revision notebook</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+        <div
+            class="more-item"
+            onclick="go('settings')">
+
+            <div class="more-icon">⚙️</div>
+
+            <div class="more-main">
+                <strong>Settings</strong>
+                <p>Manage your app data</p>
+            </div>
+
+            <div class="more-chevron">›</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="page" id="settings">
+
+    <div
+        onclick="go('more')"
+        style="
+        font-size:11px;
+        font-weight:800;
+        color:var(--orange);
+        margin-bottom:12px;
+        cursor:pointer">
+        ← MORE
+    </div>
+
+    <h1 class="title">
+        Settings
+    </h1>
+
+    <p class="subtitle">
+        Manage your app data.
+    </p>
+
+    <div class="card">
+
+        <div class="row">
+
+            <div class="row-main">
+
+                <strong>
+                    Daily Study Goal
+                </strong>
+
+                <p>
+                    2 hours
+                </p>
+
+            </div>
+
+            <button class="btn secondary">
+                2H
+            </button>
+
+        </div>
+
+        <div class="row">
+
+            <div class="row-main">
+
+                <strong>
+                    Dark Mode
+                </strong>
+
+                <p id="darkModeStatus">
+                    Off
+                </p>
+
+            </div>
+
+            <button
+                class="btn secondary"
+                id="darkModeToggleBtn"
+                onclick="toggleDarkMode()">
+                🌙 ENABLE
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <button
+            class="btn secondary full"
+            onclick="exportData()">
+
+            💾 EXPORT MY PROGRESS
+
+        </button>
+
+        <button
+            class="btn secondary full"
+            style="margin-top:10px"
+            onclick="importData()">
+
+            📂 IMPORT PROGRESS
+
+        </button>
+
+        <button
+            class="btn dark full"
+            style="margin-top:10px"
+            onclick="resetAll()">
+
+            RESET EVERYTHING
+
+        </button>
+
+    </div>
+
+</section>
+
+<nav class="bottom-nav">
+
+    <button
+        class="nav-btn active"
+        onclick="go('home',this)">
+
+        <svg viewBox="0 0 24 24">
+            <path d="M3 11.5 12 4l9 7.5"/>
+            <path d="M5.5 10v9a1 1 0 0 0 1 1H9.5a1 1 0 0 0 1-1v-4.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1V19a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-9"/>
+        </svg>
+        Home
+
+    </button>
+
+    <button
+        class="nav-btn"
+        onclick="go('subjects',this)">
+
+        <svg viewBox="0 0 24 24">
+            <rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/>
+            <rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/>
+            <rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/>
+            <rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/>
+        </svg>
+        Subjects
+
+    </button>
+
+    <button
+        class="nav-btn"
+        onclick="go('syllabus',this)">
+
+        <svg viewBox="0 0 24 24">
+            <path d="M6 4.5h9a2.5 2.5 0 0 1 2.5 2.5v12.5H8.5A2.5 2.5 0 0 1 6 17V4.5Z"/>
+            <path d="M6 17a2.5 2.5 0 0 1 2.5-2.5H17.5"/>
+            <path d="M9 8h6"/>
+            <path d="M9 11h6"/>
+        </svg>
+        Syllabus
+
+    </button>
+
+    <button
+        class="nav-btn"
+        onclick="go('analytics',this)">
+
+        <svg viewBox="0 0 24 24">
+            <path d="M4 20V11"/>
+            <path d="M10 20V6"/>
+            <path d="M16 20v-8"/>
+            <path d="M20 20V4"/>
+        </svg>
+        Progress
+
+    </button>
+
+    <button
+        class="nav-btn"
+        onclick="go('more',this)">
+
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="5.5" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="18.5" r="1.6" fill="currentColor" stroke="none"/>
+        </svg>
+        More
+
+    </button>
+
+</nav>
+
+</div>
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+    onclick="if(event.target===this)closeModal()">
+
+    <div class="modal-box">
+
+        <h3
+            class="modal-title"
+            id="modalTitle">
+        </h3>
+
+        <p
+            class="modal-message"
+            id="modalMessage">
+        </p>
+
+        <div
+            class="modal-fields"
+            id="modalFields">
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                class="btn secondary"
+                id="modalCancelBtn"
+                onclick="closeModal()">
+                CANCEL
+            </button>
+
+            <button
+                class="btn"
+                id="modalConfirmBtn">
+                OK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
